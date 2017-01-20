@@ -6,10 +6,16 @@ public class PlayerController : MonoBehaviour
 {
 	public static PlayerController Instance { get; private set; }
 
-
+	public Animator mainAnimator;
+	public RuntimeAnimatorController animatorControllerDefault;
+	public RuntimeAnimatorController animatorControllerLeft;
+	public RuntimeAnimatorController animatorControllerRight;
 	public Sprite leftSprite;
 	public Sprite rightSprite;
 	public Sprite defaultSprite;
+	public Vector2 leftMainPos;
+	public Vector2 rightMainPos;
+	public Vector2 defaultMainPos;
 
 	public Vector3 acceleration;
 	public Vector3 bocDauSpeed;
@@ -39,11 +45,21 @@ public class PlayerController : MonoBehaviour
 
 	void Update(){
 		if (rib.velocity.x < -30) {
-			sr.sprite = leftSprite;
+			if(sr.sprite != leftSprite){
+				sr.sprite = leftSprite;
+				mainAnimator.runtimeAnimatorController = animatorControllerLeft;
+				mainAnimator.gameObject.transform.localPosition = leftMainPos;
+			}
 		} else if (rib.velocity.x > 30) {
-			sr.sprite = rightSprite;
-		} else {
+			if (sr.sprite != rightSprite) {
+				sr.sprite = rightSprite;
+				mainAnimator.runtimeAnimatorController = animatorControllerRight;
+				mainAnimator.gameObject.transform.localPosition = rightMainPos;
+			}
+		} else if(sr.sprite != defaultSprite) {
 			sr.sprite = defaultSprite;
+			mainAnimator.runtimeAnimatorController = animatorControllerDefault;
+			mainAnimator.gameObject.transform.localPosition = defaultMainPos;
 		}
 	}
 
@@ -60,8 +76,6 @@ public class PlayerController : MonoBehaviour
 				rib.AddForce (direction);
 			}
 		} else if (!arriving) {
-			Debug.Log (rib.velocity.y);
-			Debug.Log (deccelerateMaxSpeed.y);
 			if (rib.velocity.y > deccelerateMaxSpeed.y) {
 				Debug.Log ("aaaa");
 				rib.AddForce (bocDauDrag);

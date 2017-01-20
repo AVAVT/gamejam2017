@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013262353104}
   - 212: {fileID: 212000014247528528}
-  - 95: {fileID: 95000013293509340}
+  - 95: {fileID: 95000011671375740}
   m_Layer: 0
   m_Name: main-top
   m_TagString: Untagged
@@ -105,7 +105,7 @@ BoxCollider2D:
   m_Offset: {x: -1.6769257, y: -0.0001373291}
   serializedVersion: 2
   m_Size: {x: 16.477028, y: 112.04222}
---- !u!95 &95000013293509340
+--- !u!95 &95000011671375740
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -114,7 +114,7 @@ Animator:
   m_GameObject: {fileID: 1000012829458698}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 229f28c328086454a82daeab1cc1a18e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a428c4c02c9784efca2d0d498744db24, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -133,6 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054c19cd9824a4257a98a59874c988f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainAnimator: {fileID: 95000011671375740}
+  animatorControllerDefault: {fileID: 9100000, guid: 229f28c328086454a82daeab1cc1a18e,
+    type: 2}
+  animatorControllerLeft: {fileID: 9100000, guid: 4a9da318389b54daf9fd1f91d457186a,
+    type: 2}
+  animatorControllerRight: {fileID: 9100000, guid: a428c4c02c9784efca2d0d498744db24,
+    type: 2}
   leftSprite: {fileID: 21300000, guid: 176210a4cb98e44e0a59b24508db893f, type: 3}
   rightSprite: {fileID: 21300000, guid: 9e80888b08c954e04964696cd1cbf022, type: 3}
   defaultSprite: {fileID: 21300000, guid: 6851bbae570cf434c8fdf89adccf5ce1, type: 3}
