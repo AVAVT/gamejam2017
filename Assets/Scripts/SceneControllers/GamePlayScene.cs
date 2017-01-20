@@ -3,7 +3,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class GamePlayScene : MonoBehaviour {
+	public static GamePlayScene Instance {get; private set;}
 
+	void Awake(){
+		Instance = this;
+	}
 	void Start(){
 		SceneManager.LoadScene (TKSceneManager.HUD_GAME_PLAY_SCENE, LoadSceneMode.Additive);
 	}
