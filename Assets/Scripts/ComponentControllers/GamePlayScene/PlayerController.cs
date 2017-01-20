@@ -6,6 +6,11 @@ public class PlayerController : MonoBehaviour
 {
 	public static PlayerController Instance { get; private set; }
 
+
+	public Sprite leftSprite;
+	public Sprite rightSprite;
+	public Sprite defaultSprite;
+
 	public Vector3 acceleration;
 	public Vector3 bocDauSpeed;
 	public Vector3 bocDauDrag;
@@ -15,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
 	public float skill1CooldownTime;
 
+	private SpriteRenderer sr;
     private Rigidbody2D rib;
 	private bool allowControl = true;
 	private bool arriving = false;
@@ -24,10 +30,21 @@ public class PlayerController : MonoBehaviour
     void Awake() {
 		Instance = this;
         rib = GetComponent<Rigidbody2D>();
+		sr = GetComponent<SpriteRenderer> ();
     }
 
 	void Start(){
 		initialY = transform.position.y;
+	}
+
+	void Update(){
+		if (rib.velocity.x < -30) {
+			sr.sprite = leftSprite;
+		} else if (rib.velocity.x > 30) {
+			sr.sprite = rightSprite;
+		} else {
+			sr.sprite = defaultSprite;
+		}
 	}
 
 	void FixedUpdate ()
@@ -72,11 +89,11 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "EnemyBack") {
-			GamePlayScene.Instance.GameOver ();
-		}
-		else if(other.gameObject.tag == "EnemyHead") {
+		if (other.gameObject.tag == "EnemyHead" || !allowControl) {
 			other.transform.parent.gameObject.SetActive (false);
+		}
+		else if (other.gameObject.tag == "EnemyBack") {
+			GamePlayScene.Instance.GameOver ();
 		}
 	}
 }

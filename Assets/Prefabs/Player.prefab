@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012829458698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 4.9, z: 0}
+  m_LocalPosition: {x: 0.1, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -102,9 +102,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.6769257, y: -0.0001373291}
   serializedVersion: 2
-  m_Size: {x: 72.201126, y: 153.8}
+  m_Size: {x: 16.477028, y: 112.04222}
 --- !u!95 &95000013293509340
 Animator:
   serializedVersion: 3
@@ -133,6 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054c19cd9824a4257a98a59874c988f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftSprite: {fileID: 21300000, guid: 176210a4cb98e44e0a59b24508db893f, type: 3}
+  rightSprite: {fileID: 21300000, guid: 9e80888b08c954e04964696cd1cbf022, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 6851bbae570cf434c8fdf89adccf5ce1, type: 3}
   acceleration: {x: 300, y: 0, z: 0}
   bocDauSpeed: {x: 0, y: 250, z: 0}
   bocDauDrag: {x: 0, y: -150, z: 0}
@@ -169,7 +172,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1397667687
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69e61c547c64e448b9b405470418e1a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6851bbae570cf434c8fdf89adccf5ce1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
