@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SplashSceneController : MonoBehaviour {
+public class SplashScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		TKSceneManager.ChangeScene (TKSceneManager.MENU_SCENE);
 	}
 }

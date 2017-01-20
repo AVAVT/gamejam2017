@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VictoryScript : MonoBehaviour {
+public class VictoryScene : MonoBehaviour {
 
-    public void gotoVictory()
+    public void GotoVictory()
     {
         TKSceneManager.ChangeScene(TKSceneManager.VICTORY_SCENE);
     }
-    public void gotoMenu()
+    public void GotoMenu()
     {
         TKSceneManager.ChangeScene(TKSceneManager.MENU_SCENE);
 
