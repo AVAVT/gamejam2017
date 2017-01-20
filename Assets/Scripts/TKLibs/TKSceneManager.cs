@@ -9,16 +9,8 @@ public class TKSceneManager : MonoBehaviour
 	public static readonly float SCREEN_FADE_TIME = 0.2f;
 
     public static readonly string SPLASH_SCENE = "SplashScene";
-    public static readonly string START_SCENE = "StartScene";
-	public static readonly string SETTINGS_SCENE = "SettingsScene";
-	public static readonly string RECORD_SCENE = "RecordScene";
-	public static readonly string RECORD_HISTORY_SCENE = "RecordHistoryScene";
-	public static readonly string RECORD_HISTORY_DETAIL_SCENE = "RecordHistoryDetailScene";
-    public static readonly string COMPETITION_SCENE = "CompetitionScene";
-	public static readonly string COMPETITION_PREPS_SCENE = "CompetitionPreparationScene";
-	public static readonly string COMPETITION_HISTORY_SCENE = "CompetitionHistoryScene";
-	public static readonly string STATISTICS_SCENE = "StatisticsScene";
-    public static readonly string SETUP_SCENE = "SetupScene";
+    public static readonly string MENU_SCENE = "MenuScene";
+	public static readonly string GAME_PLAY_SCENE = "GamePlayScene";
 
 
     private static readonly List<string> popupScenes = new List<string> (){};
