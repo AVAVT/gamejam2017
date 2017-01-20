@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
 	public Vector3 acceleration;
 	public float maxSpeed;
 
-    private Rigidbody rib;
+    private Rigidbody2D rib;
 
     void Awake() {
-        rib = GetComponent<Rigidbody>();
+        rib = GetComponent<Rigidbody2D>();
     }
 
 	void FixedUpdate ()
