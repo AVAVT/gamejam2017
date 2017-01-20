@@ -71,4 +71,12 @@ public class PlayerController : MonoBehaviour
 			rib.velocity = bocDauSpeed;
 		}
 	}
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "EnemyBack") {
+			GamePlayScene.Instance.GameOver ();
+		}
+		else if(other.gameObject.tag == "EnemyHead") {
+			other.transform.parent.gameObject.SetActive (false);
+		}
+	}
 }
