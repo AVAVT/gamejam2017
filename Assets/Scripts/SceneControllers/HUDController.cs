@@ -6,6 +6,14 @@ public class HUDController : MonoBehaviour {
 
 	public Canvas canvas;
 
+	public Button pauseButton;
+	public Button soundButton;
+	public Button skill1Button;
+	public Button skill2Button;
+	public Button skill3Button;
+	public Button skill4Button;
+	public Button skill5Button;
+
 	void Start () {
 		canvas.worldCamera = Camera.main;
 		canvas.sortingLayerName = "HUD";
@@ -20,7 +28,9 @@ public class HUDController : MonoBehaviour {
 
 
 	public void OnSkill1ButtonClicked(){
-		Debug.Log ("OnSkill1ButtonClicked");
+		PlayerController.Instance.BocDau ();
+		skill1Button.interactable = false;
+		StartCoroutine (CooldownSkill (skill1Button, PlayerController.Instance.skill1CooldownTime));
 	}
 	public void OnSkill2ButtonClicked(){
 		Debug.Log ("OnSkill2ButtonClicked");
@@ -33,5 +43,10 @@ public class HUDController : MonoBehaviour {
 	}
 	public void OnSkill5ButtonClicked(){
 		Debug.Log ("OnSkill5ButtonClicked");
+	}
+
+	private IEnumerator CooldownSkill(Button skillButton, float time){
+		yield return new WaitForSeconds (time);
+		skillButton.interactable = true;
 	}
 }

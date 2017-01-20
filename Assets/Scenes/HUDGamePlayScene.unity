@@ -1879,6 +1879,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 469321750}
+  pauseButton: {fileID: 1058323606}
+  soundButton: {fileID: 1703706159}
+  skill1Button: {fileID: 358991670}
+  skill2Button: {fileID: 389859132}
+  skill3Button: {fileID: 1764375604}
+  skill4Button: {fileID: 916444158}
+  skill5Button: {fileID: 1220433423}
 --- !u!4 &1871404439
 Transform:
   m_ObjectHideFlags: 0
