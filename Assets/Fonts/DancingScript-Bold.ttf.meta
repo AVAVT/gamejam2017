@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: f3ad3aa5e7e4dca4c89f031a24cf1a9d
+timeCreated: 1484943125
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Dancing Script
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ab5592ef3d606424ab1a953f8f861bb6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
