@@ -4,7 +4,7 @@ using System.Collections;
 public class BackgroundScroller : MonoBehaviour {
 
     public float scrollSpeed;
-    public float tileSizeX;
+    public float tileSizeY;
 
     private Vector3 startPosition;
 
@@ -15,7 +15,7 @@ public class BackgroundScroller : MonoBehaviour {
 
     void Update()
     {
-        float newPosition = Mathf.Repeat(Time.time * scrollSpeed,tileSizeX);
-        transform.position = startPosition + Vector3.right * newPosition;
+        float newPosition = Mathf.Repeat(Time.time * scrollSpeed,tileSizeY);
+        transform.position = startPosition + Vector3.up * newPosition;
     }
 }
