@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameoverScene : MonoBehaviour {
+public class GameOverScene : MonoBehaviour {
 
-    public void gotoMenu()
+    public void Replay()
     {
-        TKSceneManager.ChangeScene(TKSceneManager.MENU_SCENE);
-        Debug.Log("Start");
-    }
-    public void gotoGameover()
-    {
-        TKSceneManager.ChangeScene(TKSceneManager.GAMEOVER_SCENE);
+		TKSceneManager.ChangeScene(TKSceneManager.GAME_PLAY_SCENE);
     }
 }

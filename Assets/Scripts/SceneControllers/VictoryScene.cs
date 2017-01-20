@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class VictoryScene : MonoBehaviour {
 
-    public void GotoVictory()
+	void Start()
     {
-        TKSceneManager.ChangeScene(TKSceneManager.VICTORY_SCENE);
+		Invoke ("GoToMenu", 1);
     }
-    public void GotoMenu()
-    {
-        TKSceneManager.ChangeScene(TKSceneManager.MENU_SCENE);
 
-    }
+	void GoToMenu(){
+		TKSceneManager.ChangeScene(TKSceneManager.MENU_SCENE);
+	}
+    
 }

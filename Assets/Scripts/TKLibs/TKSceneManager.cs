@@ -12,7 +12,9 @@ public class TKSceneManager : MonoBehaviour
     public static readonly string MENU_SCENE = "MenuScene";
 	public static readonly string GAME_PLAY_SCENE = "GamePlayScene";
     public static readonly string VICTORY_SCENE = "VictoryScene";
-    public static readonly string GAMEOVER_SCENE = "GameoverScene";
+    public static readonly string GAME_OVER_SCENE = "GameOverScene";
+	public static readonly string HUD_GAME_PLAY_SCENE = "HUDGamePlayScene";
+
     private static readonly List<string> popupScenes = new List<string> (){};
 	private static readonly List<string> additiveScene = new List<string> ();
 

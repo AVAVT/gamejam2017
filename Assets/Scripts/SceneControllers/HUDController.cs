@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour {
-	
+
+	public Canvas canvas;
+
 	void Start () {
-		Time.timeScale = 0;
+		canvas.worldCamera = Camera.main;
+		canvas.sortingLayerName = "HUD";
 	}
 
 	public void OnPauseButtonClicked(){
-		Debug.Log ("OnPauseButtonClicked");
+		Time.timeScale = Time.timeScale > 0 ? 0 : 1;
 	}
 	public void OnSoundButtonClicked(){
-		Debug.Log ("OnSoundButtonClicked");
+		AudioManager.Instance.ToggleSound ();
 	}
 
 
