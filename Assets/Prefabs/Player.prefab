@@ -102,9 +102,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -1.6769257, y: -0.0001373291}
+  m_Offset: {x: -1.6769257, y: -0.88687134}
   serializedVersion: 2
-  m_Size: {x: 16.477028, y: 112.04222}
+  m_Size: {x: 16.477028, y: 101.75624}
 --- !u!95 &95000011671375740
 Animator:
   serializedVersion: 3
@@ -114,7 +114,7 @@ Animator:
   m_GameObject: {fileID: 1000012829458698}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a428c4c02c9784efca2d0d498744db24, type: 2}
+  m_Controller: {fileID: 9100000, guid: 229f28c328086454a82daeab1cc1a18e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -143,6 +143,9 @@ MonoBehaviour:
   leftSprite: {fileID: 21300000, guid: 176210a4cb98e44e0a59b24508db893f, type: 3}
   rightSprite: {fileID: 21300000, guid: 9e80888b08c954e04964696cd1cbf022, type: 3}
   defaultSprite: {fileID: 21300000, guid: 6851bbae570cf434c8fdf89adccf5ce1, type: 3}
+  leftMainPos: {x: -9, y: 5}
+  rightMainPos: {x: 9, y: 5}
+  defaultMainPos: {x: 0, y: 3.5}
   acceleration: {x: 300, y: 0, z: 0}
   bocDauSpeed: {x: 0, y: 250, z: 0}
   bocDauDrag: {x: 0, y: -150, z: 0}
