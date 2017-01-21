@@ -201,6 +201,7 @@ MonoBehaviour:
   enemyAnim: {fileID: 95000010289889328}
   horseSr: {fileID: 212000014144424226}
   enemySr: {fileID: 212000012508989550}
+  archerSprite: {fileID: 21300000, guid: d5d773eaface5495fbcd6833ddcaa496, type: 3}
   arrowPrefab: {fileID: 1000011213723436, guid: 629f067fc007449738ca86d3b916609e,
     type: 2}
   isShooting: 0

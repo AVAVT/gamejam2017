@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
 	public Animator enemyAnim;
 	public SpriteRenderer horseSr;
 	public SpriteRenderer enemySr;
+	public Sprite archerSprite;
 
 	public GameObject arrowPrefab;
 	public bool isShooting = false;
@@ -61,13 +62,10 @@ public class Enemy : MonoBehaviour {
 
 	IEnumerator ShootCoroutine(){
 		yield return new WaitForSeconds (Random.Range (0.8f, 2.5f));
-		Color col = Color.white;
-		col.a = 0.6f;
-		enemySr.color = col;
-		horseSr.color = col;
+		enemyAnim.enabled = false;
+		enemySr.sprite = archerSprite;
 		yield return new WaitForSeconds (0.3f);
-		enemySr.color = Color.white;
-		horseSr.color = Color.white;
+		enemyAnim.enabled = true;
 
 		TKUtils.Instantiate (arrowPrefab, transform.position + (Vector3)(Vector2.down * 40), Quaternion.identity);
 	}

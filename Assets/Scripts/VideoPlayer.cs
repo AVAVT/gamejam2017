@@ -8,20 +8,13 @@ public class VideoPlayer : MonoBehaviour {
     public MovieTexture movie;
 
     Renderer render;
-    void Start()
+    void OnEnable()
     {
         render = GetComponent<Renderer>();
         aSource = GetComponent<AudioSource>();
         render.material.mainTexture = movie as MovieTexture;
 
         PlayVideo();
-    }
-
-    void Update()
-    {
-        if(Time.time > movie.audioClip.length + 0.1f){
-            // load scene
-        }
     }
     private void PlayVideo()
     {
