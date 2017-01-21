@@ -4,7 +4,14 @@ using System.Collections.Generic;
 
 public class ExhaustController : MonoBehaviour {
 
+	public static ExhaustController Instance { get; private set; }
+
+	void Awake(){
+		Instance = this;
+	}
+
 	public List<GameObject> prefabs;
+	public GameObject netBoFire;
 
 	private List<GameObject> smokes = new List<GameObject>();
 	// Use this for initialization
@@ -30,9 +37,16 @@ public class ExhaustController : MonoBehaviour {
 	IEnumerator EmitSmoke(){
 		while (true) {
 			yield return new WaitForSeconds (Random.Range (0.03f, 0.11f));
-			GameObject smoke = GetSmoke ();
-			smoke.transform.position = transform.position;
-			smoke.gameObject.SetActive (true);
+
+			if (!netBoFire.activeInHierarchy) {
+				GameObject smoke = GetSmoke ();
+				smoke.transform.position = transform.position;
+				smoke.gameObject.SetActive (true);
+			}
 		}
+	}
+
+	public void NetBoFire(){
+		netBoFire.SetActive (true);
 	}
 }

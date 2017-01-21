@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 	public PlayerAnimationSet defaultPASet;
 	public PlayerAnimationSet leftPASet;
 	public PlayerAnimationSet rightPASet;
+	public Sprite bocDauSprite;
 
 	public Vector3 acceleration;
 	public Vector3 bocDauSpeed;
@@ -28,10 +29,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rib;
 	private bool allowControl = true;
 	private bool arriving = false;
-	private bool alive = true;
+	public bool alive { get; private set; }
 	private float initialY;
 
     public GameObject netBoObject;
+	public bool isNetBo{get; private set;}
     public float netBoTime = 3;
 	public float netBoAoeRange;
 
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
 		Instance = this;
         rib = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer> ();
+		isNetBo = false;
+		alive = true;
     }
 
 	void Start(){
@@ -48,17 +52,19 @@ public class PlayerController : MonoBehaviour
 	void Update(){
 		if (!alive)
 			return;
-		
-		if (rib.velocity.x < -30) {
-			if (sr.sprite != leftPASet.bikeSprite) {
-				SwitchAnimationSet (leftPASet);
+
+		if (allowControl) {
+			if (rib.velocity.x < -30) {
+				if (sr.sprite != leftPASet.bikeSprite) {
+					SwitchAnimationSet (leftPASet);
+				}
+			} else if (rib.velocity.x > 30) {
+				if (sr.sprite != rightPASet.bikeSprite) {
+					SwitchAnimationSet (rightPASet);
+				}
+			} else if (sr.sprite != defaultPASet.bikeSprite) {
+				SwitchAnimationSet (defaultPASet);
 			}
-		} else if (rib.velocity.x > 30) {
-			if (sr.sprite != rightPASet.bikeSprite) {
-				SwitchAnimationSet (rightPASet);
-			}
-		} else if (sr.sprite != defaultPASet.bikeSprite) {
-			SwitchAnimationSet (defaultPASet);
 		}
 	}
 
@@ -79,16 +85,15 @@ public class PlayerController : MonoBehaviour
 			}
 		} else if (!arriving) {
 			if (rib.velocity.y > deccelerateMaxSpeed.y) {
-				Debug.Log ("aaaa");
 				rib.AddForce (bocDauDrag);
 			}
 
 			if (rib.velocity.y < 0 && transform.position.y <= initialY + arrivalZoneRadius) {
 				arriving = true;
+				sr.sprite = defaultPASet.bikeSprite;
 			}
 		} else if (rib.velocity.y < 0 && initialY+2 < transform.position.y) {			
 			rib.velocity = Vector3.Lerp (Vector3.zero, deccelerateMaxSpeed, Mathfx.Sinerp(0,1,Mathf.Clamp((transform.position.y-initialY) / arrivalZoneRadius, 0, 1)));
-			Debug.Log(Mathf.Clamp ((transform.position.y - initialY) / arrivalZoneRadius, 0, 1));
 		} else{
 			arriving = false;
 			allowControl = true;
@@ -100,17 +105,22 @@ public class PlayerController : MonoBehaviour
 	public void BocDau(){
 		if (allowControl) {
 			allowControl = false;
-
+			SwitchAnimationSet (defaultPASet);
+			sr.sprite = bocDauSprite;
 			rib.velocity = bocDauSpeed;
+			ExhaustController.Instance.NetBoFire ();
 		}
 	}
 
     public IEnumerator INetBo()
     {
+		ExhaustController.Instance.NetBoFire ();
+		isNetBo = true;
 		EnemyPool.Instance.CheckNetBo ();
         netBoObject.SetActive(true);
         yield return new WaitForSeconds(netBoTime);
         netBoObject.SetActive(false);
+		isNetBo = false;
     }
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -131,17 +141,19 @@ public class PlayerController : MonoBehaviour
 		for (int i = 0; i < colliders.Count; i++) {
 			colliders [i].enabled = false;
 		}
-		mainAnimator.speed = 0;
-		StartCoroutine (AnimateDead());
+		sr.sprite = direction > 0 ? rightPASet.bikeCrash : leftPASet.bikeCrash;
+		mainAnimator.runtimeAnimatorController = direction > 0 ? rightPASet.dieAnimator : leftPASet.dieAnimator;
+		StartCoroutine (AnimateDead(direction ));
 	}
 
-	IEnumerator AnimateDead(){
-		Vector3 startVelocity = new Vector3 (rib.velocity.x*0.7f, BackgroundScroller.Instance.scrollSpeed*0.5f, 0);
-		Vector3 endVelocity = new Vector3 (rib.velocity.x*0.3f, BackgroundScroller.Instance.scrollSpeed, 0);
-
+	IEnumerator AnimateDead(int direction){
+		Vector3 startVelocity = new Vector3 (-rib.velocity.x*0.7f, BackgroundScroller.Instance.scrollSpeed*0.5f, 0);
+		Vector3 endVelocity = new Vector3 (-rib.velocity.x*0.3f, BackgroundScroller.Instance.scrollSpeed, 0);
+		Vector3 mainVelocity = (Vector3.right + Vector3.up*Random.Range(0.0f, 0.3f)) * rib.velocity.x;
 		float time = 0;
 		while (time < 0.3f) {
 			rib.velocity = Vector3.Lerp (startVelocity, endVelocity, Mathfx.Sinerp (0, 1, time / 0.3f));
+			mainAnimator.transform.localPosition += mainVelocity * Time.deltaTime;
 
 			time += Time.deltaTime;
 			yield return null;
@@ -162,7 +174,9 @@ public class PlayerController : MonoBehaviour
 public class PlayerAnimationSet{
 	public Sprite bikeSprite;
 	public Sprite mainSprite;
+	public Sprite bikeCrash;
 	public Vector2 mainPos;
 	public Vector2 exhaustPos;
 	public RuntimeAnimatorController mainAnimator;
+	public RuntimeAnimatorController dieAnimator;
 }

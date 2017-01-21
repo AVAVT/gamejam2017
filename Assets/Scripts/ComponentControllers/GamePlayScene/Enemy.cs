@@ -5,8 +5,9 @@ public class Enemy : MonoBehaviour {
 
     private const float SPAWN_Y = 670;
     private const float SPAWN_RANGE_X = 900;
-    private const float SPEED_TB = -3;
-    private const float RANGE = 0.5f;
+    private const float SPEED_TB = -1;
+    private const float RANGE = 0.2f;
+	private const float BASE_SPEED = 150;
 
 	public BoxCollider2D col1;
 	public BoxCollider2D col2;
@@ -20,13 +21,13 @@ public class Enemy : MonoBehaviour {
     public void Spawn()
     {
         gameObject.SetActive(true);
-        speed = Random.Range(SPEED_TB - RANGE, SPEED_TB + RANGE);
+		speed = Random.Range(SPEED_TB - RANGE, SPEED_TB + RANGE) * BASE_SPEED;
         transform.position = new Vector2(Random.Range(-SPAWN_RANGE_X, SPAWN_RANGE_X), SPAWN_Y);
     }
 
     void Update(){
 		if (col1.enabled) {
-			transform.Translate(0, speed, 0);
+			transform.position += new Vector3(0, speed*Time.deltaTime, 0);
 		} else {
 			transform.position += new Vector3(0, BackgroundScroller.Instance.scrollSpeed*Time.deltaTime, 0);
 		}
