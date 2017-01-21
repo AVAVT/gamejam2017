@@ -4,23 +4,26 @@ using System.Collections.Generic;
 
 public class EnemyPool : MonoBehaviour
 {
+	public static EnemyPool Instance { get; private set; }
+	void Awake(){
+		Instance = this;
+	}
 
+	public float delayTime;
     public GameObject enemyPrefab;
-    public int poolAmount = 20;
+    public int poolAmount = 2;
     List<GameObject> enemies = new List<GameObject>();
 
     void Start()
     {
         for(int i =0;i < poolAmount; i++){
-            GameObject obj = Instantiate(enemyPrefab);
-            obj.SetActive(false);
-            enemies.Add(obj);
+			AddEnemy ();
         }
 
-        StartCoroutine(Spawn(1));
+        StartCoroutine(Spawn());
     }
 
-    IEnumerator Spawn(float delayTime)
+    IEnumerator Spawn()
     {
         while (true)
         {
@@ -36,6 +39,14 @@ public class EnemyPool : MonoBehaviour
 
     }
 
+	public void CheckNetBo(){
+		foreach(GameObject enemy in enemies){
+			if(enemy.activeInHierarchy && Vector2.Distance(enemy.transform.position, PlayerController.Instance.transform.position) < PlayerController.Instance.netBoAoeRange){
+				enemy.GetComponent<Enemy>().Die(Random.Range(0,100) < 50 ? -1 : 1);
+			}
+		}
+	}
+
     public GameObject GetPooledObject()
     {
         for (int i = 0; i < enemies.Count; i++)
@@ -45,6 +56,13 @@ public class EnemyPool : MonoBehaviour
                 return enemies[i];
             }
         }
-        return null;
+		return AddEnemy();
     }
+
+	private GameObject AddEnemy(){
+		GameObject obj = Instantiate(enemyPrefab);
+		obj.SetActive(false);
+		enemies.Add(obj);
+		return obj;
+	}
 }

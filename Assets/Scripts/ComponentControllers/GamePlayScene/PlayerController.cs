@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	public static PlayerController Instance { get; private set; }
 
 	public Animator mainAnimator;
+	public GameObject exhaust;
 
 	public PlayerAnimationSet defaultPASet;
 	public PlayerAnimationSet leftPASet;
@@ -31,9 +32,8 @@ public class PlayerController : MonoBehaviour
 	private float initialY;
 
     public GameObject netBoObject;
-    public bool isNetBo = false;
-    private float NetBoTime = 3;
-
+    public float netBoTime = 3;
+	public float netBoAoeRange;
 
     void Awake() {
 		Instance = this;
@@ -107,18 +107,18 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator INetBo()
     {
-        isNetBo = true;
+		EnemyPool.Instance.CheckNetBo ();
         netBoObject.SetActive(true);
-        yield return new WaitForSeconds(NetBoTime);
+        yield return new WaitForSeconds(netBoTime);
         netBoObject.SetActive(false);
-        isNetBo = false;
     }
+
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "EnemyHead" || !allowControl) {
 			other.transform.parent.GetComponent<Enemy> ().Die (rib.velocity.x > 0 ? -1 : 1);
 		}
-		else if (other.gameObject.tag == "EnemyBack") {
-			Die (rib.velocity.x > 0 ? -1 : 1);
+		else if (other.gameObject.tag == "EnemyBack" || other.gameObject.tag == "Obstacle") {
+			Die (rib.velocity.x > 0 ? 1 : -1);
 		}
 	}
 
@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour
 		sr.sprite = set.bikeSprite;
 		mainAnimator.runtimeAnimatorController = set.mainAnimator;
 		mainAnimator.gameObject.transform.localPosition = set.mainPos;
+		exhaust.transform.localPosition = set.exhaustPos;
 	}
 }
 
@@ -162,5 +163,6 @@ public class PlayerAnimationSet{
 	public Sprite bikeSprite;
 	public Sprite mainSprite;
 	public Vector2 mainPos;
+	public Vector2 exhaustPos;
 	public RuntimeAnimatorController mainAnimator;
 }

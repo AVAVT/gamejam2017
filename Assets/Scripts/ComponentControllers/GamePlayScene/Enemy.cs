@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-    private const float SPAWN_Y = 350;
-    private const float SPAWN_RANGE_X = 520;
-    private const float SPEED_TB = -1;
+    private const float SPAWN_Y = 670;
+    private const float SPAWN_RANGE_X = 900;
+    private const float SPEED_TB = -3;
     private const float RANGE = 0.5f;
 
 	public BoxCollider2D col1;
@@ -23,19 +23,13 @@ public class Enemy : MonoBehaviour {
         speed = Random.Range(SPEED_TB - RANGE, SPEED_TB + RANGE);
         transform.position = new Vector2(Random.Range(-SPAWN_RANGE_X, SPAWN_RANGE_X), SPAWN_Y);
     }
+
     void Update(){
 		if (col1.enabled) {
 			transform.Translate(0, speed, 0);
 		} else {
 			transform.position += new Vector3(0, BackgroundScroller.Instance.scrollSpeed*Time.deltaTime, 0);
 		}
-
-
-        if (PlayerController.Instance.isNetBo && Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < 150)
-        {
-            int direction = Random.Range(0,1);
-            Die(direction);
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
