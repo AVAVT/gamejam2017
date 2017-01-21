@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     private const float SPEED_TB = -1;
     private const float RANGE = 0.2f;
 	private const float BASE_SPEED = 150;
+	private const float ARROW_CHANCE = 100;
 
 	public BoxCollider2D col1;
 	public BoxCollider2D col2;
@@ -16,6 +17,9 @@ public class Enemy : MonoBehaviour {
 	public SpriteRenderer horseSr;
 	public SpriteRenderer enemySr;
 
+	public GameObject arrowPrefab;
+	public bool isShooting = false;
+
     private float speed;
 
     public void Spawn()
@@ -23,6 +27,9 @@ public class Enemy : MonoBehaviour {
         gameObject.SetActive(true);
 		speed = Random.Range(SPEED_TB - RANGE, SPEED_TB + RANGE) * BASE_SPEED;
         transform.position = new Vector2(Random.Range(-SPAWN_RANGE_X, SPAWN_RANGE_X), SPAWN_Y);
+		if (Random.Range (1, 101) < ARROW_CHANCE) {
+			StartCoroutine (ShootCoroutine());
+		}
     }
 
     void Update(){
@@ -37,7 +44,6 @@ public class Enemy : MonoBehaviour {
     {
         if (other.gameObject.tag.Equals("Bottom"))
         {
-            Debug.Log("Enemy collision Bottom");
             gameObject.SetActive(false);
         }
     }
@@ -51,9 +57,22 @@ public class Enemy : MonoBehaviour {
 		StartCoroutine (AnimateDead());
 	}
 
+	IEnumerator ShootCoroutine(){
+		yield return new WaitForSeconds (Random.Range (1.0f, 3.0f));
+		Color col = Color.white;
+		col.a = 0.6f;
+		enemySr.color = col;
+		horseSr.color = col;
+		yield return new WaitForSeconds (0.5f);
+		enemySr.color = Color.white;
+		horseSr.color = Color.white;
+
+		TKUtils.Instantiate (arrowPrefab, transform.position + (Vector3)(Vector2.down * 40), Quaternion.identity);
+	}
+
 	IEnumerator AnimateDead(){
-		horseSr.color = Color.red;
-		enemySr.color = Color.red;
+		horseSr.color = Color.gray;
+		enemySr.color = Color.gray;
 		yield return new WaitForSeconds (0.3f);
 
 		horseAnim.speed = 1;

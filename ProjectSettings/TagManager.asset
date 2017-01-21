@@ -8,6 +8,7 @@ TagManager:
   - EnemyHead
   - EnemyBack
   - Obstacle
+  - Arrow
   layers:
   - Default
   - TransparentFX

@@ -125,10 +125,17 @@ public class PlayerController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "EnemyHead" || !allowControl) {
-			other.transform.parent.GetComponent<Enemy> ().Die (rib.velocity.x > 0 ? -1 : 1);
+			if (other.transform.parent != null) {
+				other.transform.parent.GetComponent<Enemy> ().Die (rib.velocity.x > 0 ? -1 : 1);	
+			} else {
+				Destroy (other.gameObject);
+			}
 		}
-		else if (other.gameObject.tag == "EnemyBack" || other.gameObject.tag == "Obstacle") {
+		else if (other.gameObject.tag == "EnemyBack" || other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Arrow") {
 			Die (rib.velocity.x > 0 ? 1 : -1);
+			if (other.gameObject.tag == "Arrow") {
+				other.GetComponent<ArrowController> ().OnHit ();
+			}
 		}
 	}
 

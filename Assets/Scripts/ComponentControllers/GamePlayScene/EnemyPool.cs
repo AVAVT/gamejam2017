@@ -4,18 +4,25 @@ using System.Collections.Generic;
 
 public class EnemyPool : MonoBehaviour
 {
+	
 	public static EnemyPool Instance { get; private set; }
 	void Awake(){
 		Instance = this;
 	}
+
+	private static float TIME_UNTIL_ENEMY_FIRE = 0;
 
 	public float delayTime;
     public GameObject enemyPrefab;
     public int poolAmount = 2;
     List<GameObject> enemies = new List<GameObject>();
 
+	private Coroutine fireCoroutine;
+
     void Start()
     {
+		fireCoroutine = StartCoroutine (EnableFireCoroutine ());
+
         for(int i =0;i < poolAmount; i++){
 			AddEnemy ();
         }
@@ -23,6 +30,13 @@ public class EnemyPool : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
+	IEnumerator EnableFireCoroutine(){
+		yield return new WaitForSeconds (TIME_UNTIL_ENEMY_FIRE);
+		foreach (GameObject enemy in enemies) {
+			enemy.GetComponent<Enemy>().isShooting = true;
+		}
+	}
+	
     IEnumerator Spawn()
     {
         while (true)
@@ -63,6 +77,10 @@ public class EnemyPool : MonoBehaviour
 		GameObject obj = Instantiate(enemyPrefab);
 		obj.SetActive(false);
 		enemies.Add(obj);
+		if (fireCoroutine == null) {
+			Debug.Log ("aaaa");
+			obj.GetComponent<Enemy> ().isShooting = true;
+		}
 		return obj;
 	}
 }

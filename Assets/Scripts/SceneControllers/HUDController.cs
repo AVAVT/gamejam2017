@@ -20,6 +20,13 @@ public class HUDController : MonoBehaviour {
 	public GameObject skill4Panel;
 	public GameObject skill5Panel;
 
+	public Sprite soundOnSprite;
+	public Sprite soundOffSprite;
+	public Sprite playSprite;
+	public Sprite pauseSprite;
+
+	public GameObject gamePausedText;
+
 	void Start () {
 		canvas.worldCamera = Camera.main;
 		canvas.sortingLayerName = "HUD";
@@ -28,19 +35,28 @@ public class HUDController : MonoBehaviour {
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			OnSkill1ButtonClicked ();
-		}
-		else if (Input.GetKeyDown (KeyCode.W)) {
+		} else if (Input.GetKeyDown (KeyCode.W)) {
 			OnSkill2ButtonClicked ();
+		} else if (Input.GetKeyDown (KeyCode.P)) {
+			OnPauseButtonClicked ();
 		}
 	}
 
 	public void OnPauseButtonClicked(){
-		Time.timeScale = Time.timeScale > 0 ? 0 : 1;
-	}
-	public void OnSoundButtonClicked(){
-		AudioManager.Instance.ToggleSound ();
+		if (Time.timeScale > 0) {
+			Time.timeScale = 0;
+			pauseButton.GetComponent<Image> ().sprite = playSprite;
+			gamePausedText.SetActive (true);
+		} else {
+			Time.timeScale = 1;
+			pauseButton.GetComponent<Image> ().sprite = pauseSprite;
+			gamePausedText.SetActive (false);
+		}
 	}
 
+	public void OnSoundButtonClicked(){
+		soundButton.GetComponent<Image>().sprite = AudioManager.Instance.ToggleSound () ? soundOnSprite : soundOffSprite;
+	}
 
 	public void OnSkill1ButtonClicked(){
 		if (!skill1Button.interactable || !PlayerController.Instance.alive)
