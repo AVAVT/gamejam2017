@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 	public float arrivalZoneRadius;
 
 	public float skill1CooldownTime;
+    public float skill2CooldownTime;
 
 	private SpriteRenderer sr;
     private Rigidbody2D rib;
@@ -28,6 +29,10 @@ public class PlayerController : MonoBehaviour
 	private bool arriving = false;
 	private bool alive = true;
 	private float initialY;
+
+    public GameObject netBoObject;
+    public bool isNetBo = false;
+    private float NetBoTime = 3;
 
 
     void Awake() {
@@ -99,6 +104,15 @@ public class PlayerController : MonoBehaviour
 			rib.velocity = bocDauSpeed;
 		}
 	}
+
+    public IEnumerator INetBo()
+    {
+        isNetBo = true;
+        netBoObject.SetActive(true);
+        yield return new WaitForSeconds(NetBoTime);
+        netBoObject.SetActive(false);
+        isNetBo = false;
+    }
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "EnemyHead" || !allowControl) {
 			other.transform.parent.GetComponent<Enemy> ().Die (rib.velocity.x > 0 ? -1 : 1);

@@ -34,7 +34,9 @@ public class HUDController : MonoBehaviour {
 		StartCoroutine (CooldownSkill (skill1Button, PlayerController.Instance.skill1CooldownTime));
 	}
 	public void OnSkill2ButtonClicked(){
-		Debug.Log ("OnSkill2ButtonClicked");
+        StartCoroutine(PlayerController.Instance.INetBo());
+        skill2Button.interactable = false;
+        StartCoroutine(CooldownSkill(skill2Button, PlayerController.Instance.skill2CooldownTime));
 	}
 	public void OnSkill3ButtonClicked(){
 		Debug.Log ("OnSkill3ButtonClicked");

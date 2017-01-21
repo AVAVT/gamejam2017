@@ -29,6 +29,13 @@ public class Enemy : MonoBehaviour {
 		} else {
 			transform.position += new Vector3(0, BackgroundScroller.Instance.scrollSpeed*Time.deltaTime, 0);
 		}
+
+
+        if (PlayerController.Instance.isNetBo && Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < 150)
+        {
+            int direction = Random.Range(0,1);
+            Die(direction);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
