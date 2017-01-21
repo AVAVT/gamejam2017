@@ -2917,8 +2917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b1ad36ccea93c4e9b52744309312bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLength: 5
-  timeUntilEnemyFire: 2
+  gameLength: 40
+  timeUntilEnemyFire: 15
   delayTimeStart: 1.5
   delayTimeMax: 0.9
   delayTime: 1.5

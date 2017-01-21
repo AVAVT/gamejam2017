@@ -7,19 +7,16 @@ public class Opening_S5 : MonoBehaviour {
     public AnimationClip clip;
 
     private float timeDuring = 0;
-    void Start()
+    
+	void Start()
     {
-        timeDuring = clip.length;
+		timeDuring = clip.length;
+		StartCoroutine (ChangeScene());
     }
-    void Update()
-    {
-        if (Time.time > timeDuring + 0.1f)
-        {
-            TKSceneManager.ChangeScene(TKSceneManager.GAME_PLAY_SCENE);
-        }
-    }
-    public void EndAnimation()
-    {
 
-    }
+	IEnumerator ChangeScene()
+	{
+		yield return new WaitForSeconds (timeDuring + 0.3f);
+		TKSceneManager.ChangeScene(TKSceneManager.GAME_PLAY_SCENE);
+	}
 }

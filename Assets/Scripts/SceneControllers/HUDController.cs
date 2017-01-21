@@ -97,16 +97,19 @@ public class HUDController : MonoBehaviour {
 	}
 
 	public void ActivateSkill3(){
-		Debug.Log ("aaaa");
 		StopAllCoroutines ();
 		skillButtons [0].interactable = false;
 		skillButtons [1].interactable = false;
-		skillButtons [2].interactable = true;
-		skillButtons [2].gameObject.SetActive (true);
+
 		StartCoroutine (AnimateSkill3Button ());
 	}
 
 	IEnumerator AnimateSkill3Button(){
+		yield return new WaitForSeconds (1);
+
+		skillButtons [2].interactable = true;
+		skillButtons [2].gameObject.SetActive (true);
+
 		float time = 0;
 		while (true) {
 			skillButtons [2].image.color = Color.Lerp (Color.white, Color.red, (Mathf.Sin(Mathf.PI * 4 * time / 0.5f) + 1)/2.0f);

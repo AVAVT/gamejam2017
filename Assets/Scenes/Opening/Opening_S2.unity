@@ -216,8 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d1161ea1dcc3b4d80195a4bcf9703b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canhSat: {fileID: 1709023840}
-  set: {fileID: 1597007715}
 --- !u!4 &355484267
 Transform:
   m_ObjectHideFlags: 0
@@ -339,7 +337,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bb51d30c08803744a83010993e9aed64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 083413ffcc8ef4f0bbf61854e59c8647, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -523,7 +521,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 87c6f522e2c4bfb44922687b96a26a8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7f4d77cfa4994007a0e9f828dc90f39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

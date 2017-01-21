@@ -14,7 +14,6 @@ public class TKSceneManager : MonoBehaviour
     public static readonly string VICTORY_SCENE = "VictoryScene";
     public static readonly string GAME_OVER_SCENE = "GameOverScene";
 	public static readonly string HUD_GAME_PLAY_SCENE = "HUDGamePlayScene";
-	public static readonly string HO_GUOM_SCENE = "HoGuomScene";
 
     public static readonly string OPENING_1 = "Opening_S1";
     public static readonly string OPENING_2 = "Opening_S2";

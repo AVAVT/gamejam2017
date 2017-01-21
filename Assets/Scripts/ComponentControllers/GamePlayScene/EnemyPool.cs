@@ -54,6 +54,7 @@ public class EnemyPool : MonoBehaviour
 	}
 
 	IEnumerator AnimateEndGame(){
+		HUDController.Instance.ActivateSkill3 ();
 		for (int i = 0; i< 10; i++) {
 			SpawnEnemy ();
 			SpawnEnemy ();
@@ -66,7 +67,6 @@ public class EnemyPool : MonoBehaviour
 		}
 
 		GamePlayScene.Instance.Victory ();
-		HUDController.Instance.ActivateSkill3 ();
 	}
 
 	IEnumerator EnableFireCoroutine(){

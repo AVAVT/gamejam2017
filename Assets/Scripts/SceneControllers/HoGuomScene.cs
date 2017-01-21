@@ -11,6 +11,6 @@ public class HoGuomScene : MonoBehaviour {
 	IEnumerator WaitForSceneChange(){
 		yield return new WaitForSeconds (12.3f);
 		AudioManager.Instance.StopHoGuomBGM ();
-		TKSceneManager.ChangeScene (TKSceneManager.GAME_PLAY_SCENE);
+		TKSceneManager.ChangeScene (TKSceneManager.OPENING_2);
 	}
 }
