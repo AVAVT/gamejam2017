@@ -15,6 +15,16 @@ public class TKSceneManager : MonoBehaviour
     public static readonly string GAME_OVER_SCENE = "GameOverScene";
 	public static readonly string HUD_GAME_PLAY_SCENE = "HUDGamePlayScene";
 
+    public static readonly string OPENING_1 = "Opening_S1";
+    public static readonly string OPENING_2 = "Opening_S2";
+    public static readonly string OPENING_3 = "Opening_S3";
+    public static readonly string OPENING_4 = "Opening_S4";
+    public static readonly string OPENING_5 = "Opening_S5";
+
+    public static readonly string DEAD_1 = "Dead1";
+    public static readonly string DEAD_2 = "Dead2";
+    public static readonly string DEAD_3 = "Dead3";
+
     private static readonly List<string> popupScenes = new List<string> (){};
 	private static readonly List<string> additiveScene = new List<string> ();
 

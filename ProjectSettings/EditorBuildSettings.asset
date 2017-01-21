@@ -17,3 +17,19 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
   - enabled: 1
     path: Assets/Scenes/VictoryScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Opening/Opening_S1.unity
+  - enabled: 1
+    path: Assets/Scenes/Opening/Opening_S2.unity
+  - enabled: 1
+    path: Assets/Scenes/Opening/Opening_S3.unity
+  - enabled: 1
+    path: Assets/Scenes/Opening/Opening_S4.unity
+  - enabled: 1
+    path: Assets/Scenes/Opening/Opening_S5.unity
+  - enabled: 1
+    path: Assets/Scenes/Dead/Dead1.unity
+  - enabled: 1
+    path: Assets/Scenes/Dead/Dead2.unity
+  - enabled: 1
+    path: Assets/Scenes/Dead/Dead3.unity
