@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour {
 		
 	public AudioSource UIToggleSource;
 	public AudioSource UIClickSource;
+	public AudioSource HoGuomSource;
 
 	public bool ToggleSound(){
 		AudioListener.volume = AudioListener.volume > 0 ? 0 : 1;
@@ -24,5 +25,13 @@ public class AudioManager : MonoBehaviour {
 
 	public void PlayToggleSound(){
 		UIToggleSource.Play ();
+	}
+
+	public void PlayHoGuomBGM(){
+		HoGuomSource.Play ();
+	}
+
+	public void StopHoGuomBGM(){
+		HoGuomSource.Stop ();
 	}
 }
