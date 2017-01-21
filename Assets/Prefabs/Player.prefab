@@ -419,7 +419,14 @@ MonoBehaviour:
     exhaustPos: {x: -1.5, y: -73}
     mainAnimator: {fileID: 9100000, guid: a428c4c02c9784efca2d0d498744db24, type: 2}
     dieAnimator: {fileID: 9100000, guid: ccd12949cc1b746eca58460a42153550, type: 2}
-  bocDauSprite: {fileID: 21300000, guid: 5aa13ea7ea0d849569564896873a278e, type: 3}
+  bocdauPASet:
+    bikeSprite: {fileID: 21300000, guid: 5aa13ea7ea0d849569564896873a278e, type: 3}
+    mainSprite: {fileID: 21300000, guid: 7aa76eb6cb56d4427a72c15e44c9afb1, type: 3}
+    bikeCrash: {fileID: 0}
+    mainPos: {x: 0, y: 3.5}
+    exhaustPos: {x: 14, y: -73}
+    mainAnimator: {fileID: 9100000, guid: 229f28c328086454a82daeab1cc1a18e, type: 2}
+    dieAnimator: {fileID: 0}
   acceleration: {x: 300, y: 0, z: 0}
   bocDauSpeed: {x: 0, y: 450, z: 0}
   bocDauDrag: {x: 0, y: -250, z: 0}

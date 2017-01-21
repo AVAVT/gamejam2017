@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 	public PlayerAnimationSet defaultPASet;
 	public PlayerAnimationSet leftPASet;
 	public PlayerAnimationSet rightPASet;
-	public Sprite bocDauSprite;
+	public PlayerAnimationSet bocdauPASet;
 
 	public Vector3 acceleration;
 	public Vector3 bocDauSpeed;
@@ -105,8 +105,7 @@ public class PlayerController : MonoBehaviour
 	public void BocDau(){
 		if (allowControl) {
 			allowControl = false;
-			SwitchAnimationSet (defaultPASet);
-			sr.sprite = bocDauSprite;
+			SwitchAnimationSet (bocdauPASet);
 			rib.velocity = bocDauSpeed;
 			ExhaustController.Instance.NetBoFire ();
 		}

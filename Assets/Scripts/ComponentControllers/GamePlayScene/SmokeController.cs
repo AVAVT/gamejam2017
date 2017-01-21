@@ -15,9 +15,9 @@ public class SmokeController : MonoBehaviour {
 		float time = 0;
 		Color clear = Color.white;
 		clear.a = 0;
-		while (time < 4.0f) {
+		while (time < 3.0f) {
 			transform.position += (Vector3.up * BackgroundScroller.Instance.scrollSpeed) * Time.deltaTime;
-			sr.color = Color.Lerp (Color.white, clear, Mathfx.Sinerp(0, 1, time / 4f));
+			sr.color = Color.Lerp (Color.white, clear, Mathfx.Sinerp(0, 1, time / 3.0f));
 
 			time += Time.deltaTime;
 			yield return null;

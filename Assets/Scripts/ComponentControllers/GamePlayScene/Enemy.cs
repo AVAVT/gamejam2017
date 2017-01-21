@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
         gameObject.SetActive(true);
 		speed = Random.Range(SPEED_TB - RANGE, SPEED_TB + RANGE) * BASE_SPEED;
         transform.position = new Vector2(Random.Range(-SPAWN_RANGE_X, SPAWN_RANGE_X), SPAWN_Y);
-		if (Random.Range (1, 101) < ARROW_CHANCE) {
+		if (isShooting && Random.Range (1, 101) < ARROW_CHANCE) {
 			StartCoroutine (ShootCoroutine());
 		}
     }
@@ -54,16 +54,17 @@ public class Enemy : MonoBehaviour {
 		col2.enabled = false;
 		horseAnim.speed = 0;
 		enemyAnim.speed = 0;
+		StopAllCoroutines ();
 		StartCoroutine (AnimateDead());
 	}
 
 	IEnumerator ShootCoroutine(){
-		yield return new WaitForSeconds (Random.Range (1.0f, 3.0f));
+		yield return new WaitForSeconds (Random.Range (0.8f, 2.5f));
 		Color col = Color.white;
 		col.a = 0.6f;
 		enemySr.color = col;
 		horseSr.color = col;
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (0.3f);
 		enemySr.color = Color.white;
 		horseSr.color = Color.white;
 
@@ -83,5 +84,6 @@ public class Enemy : MonoBehaviour {
 		col2.enabled = true;
 		horseSr.color = Color.white;
 		enemySr.color = Color.white;
+
 	}
 }

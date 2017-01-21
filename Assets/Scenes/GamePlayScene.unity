@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b1ad36ccea93c4e9b52744309312bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 2
+  delayTime: 1.5
   enemyPrefab: {fileID: 1000013154743738, guid: 082b564d080a15249b305ef3823c2c74,
     type: 2}
   poolAmount: 2
@@ -3139,6 +3139,11 @@ Prefab:
     - target: {fileID: 4000011547389880, guid: 817f4e58ed9be4b78865cae930a252a1, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013562892312, guid: 817f4e58ed9be4b78865cae930a252a1,
+        type: 2}
+      propertyPath: bocdauPASet.mainPos.y
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 817f4e58ed9be4b78865cae930a252a1, type: 2}

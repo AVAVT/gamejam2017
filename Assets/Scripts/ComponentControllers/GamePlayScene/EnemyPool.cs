@@ -32,6 +32,8 @@ public class EnemyPool : MonoBehaviour
 
 	IEnumerator EnableFireCoroutine(){
 		yield return new WaitForSeconds (TIME_UNTIL_ENEMY_FIRE);
+		Debug.Log ("Enemy Shooting enabled");
+
 		foreach (GameObject enemy in enemies) {
 			enemy.GetComponent<Enemy>().isShooting = true;
 		}

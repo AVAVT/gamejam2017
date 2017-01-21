@@ -1485,7 +1485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1493,7 +1493,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: de65c5794a146a548b2cbe81670cce28, type: 3}
     m_FontSize: 140
     m_FontStyle: 0
     m_BestFit: 0
@@ -1505,7 +1505,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Paused
+  m_Text: "\u1EA4n P \u0111\u1EC3 ti\u1EBFp t\u1EE5c ch\u01A1i"
 --- !u!222 &976392534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2245,7 +2245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
-    m_Right: 30
+    m_Right: 90
     m_Top: 30
     m_Bottom: 0
   m_ChildAlignment: 2
@@ -2653,6 +2653,11 @@ MonoBehaviour:
   skill3Panel: {fileID: 0}
   skill4Panel: {fileID: 0}
   skill5Panel: {fileID: 0}
+  soundOnSprite: {fileID: 21300000, guid: c8be6929472624110b188e8b16dabb1f, type: 3}
+  soundOffSprite: {fileID: 21300000, guid: 244226a7c376b49479f48a3780dd9463, type: 3}
+  playSprite: {fileID: 21300000, guid: 7d2e6677fecf34a0da014e9767b006a7, type: 3}
+  pauseSprite: {fileID: 21300000, guid: 085d4f41fc6cd4484ab3fd538faae3b4, type: 3}
+  gamePausedText: {fileID: 976392530}
 --- !u!4 &1871404439
 Transform:
   m_ObjectHideFlags: 0
