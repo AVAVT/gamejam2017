@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour {
     private const float SPEED_TB = -1;
     private const float RANGE = 0.2f;
 	private const float BASE_SPEED = 150;
-	private const float ARROW_CHANCE = 30;
+
+	public static float arrowChance = 0;
 
 	public BoxCollider2D col1;
 	public BoxCollider2D col2;
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour {
         gameObject.SetActive(true);
 		speed = Random.Range(SPEED_TB - RANGE, SPEED_TB + RANGE) * BASE_SPEED;
         transform.position = new Vector2(Random.Range(-SPAWN_RANGE_X, SPAWN_RANGE_X), SPAWN_Y);
-		if (isShooting && Random.Range (1, 101) < ARROW_CHANCE) {
+		if (isShooting && Random.Range (1, 101) < arrowChance) {
 			StartCoroutine (ShootCoroutine());
 		}
     }

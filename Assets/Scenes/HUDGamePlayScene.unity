@@ -262,7 +262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &292955485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2643,11 +2643,9 @@ MonoBehaviour:
   canvas: {fileID: 469321750}
   pauseButton: {fileID: 1058323606}
   soundButton: {fileID: 1703706159}
-  skill1Button: {fileID: 358991670}
-  skill2Button: {fileID: 389859132}
-  skill3Button: {fileID: 1764375604}
-  skill4Button: {fileID: 916444158}
-  skill5Button: {fileID: 1220433423}
+  skillButtons:
+  - {fileID: 358991670}
+  - {fileID: 389859132}
   skill1Panel: {fileID: 1015808285}
   skill2Panel: {fileID: 583114773}
   skill3Panel: {fileID: 0}
@@ -2658,6 +2656,7 @@ MonoBehaviour:
   playSprite: {fileID: 21300000, guid: 7d2e6677fecf34a0da014e9767b006a7, type: 3}
   pauseSprite: {fileID: 21300000, guid: 085d4f41fc6cd4484ab3fd538faae3b4, type: 3}
   gamePausedText: {fileID: 976392530}
+  globalCooldown: 1.5
 --- !u!4 &1871404439
 Transform:
   m_ObjectHideFlags: 0

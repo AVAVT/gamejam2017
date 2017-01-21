@@ -10,17 +10,25 @@ public class EnemyPool : MonoBehaviour
 		Instance = this;
 	}
 
-	private static float TIME_UNTIL_ENEMY_FIRE = 30;
-
+	public float gameLength;
+	public float timeUntilEnemyFire;
+	public float delayTimeStart;
+	public float delayTimeMax;
 	public float delayTime;
+	public float arrowChanceStart;
+	public float arrowChanceMax;
     public GameObject enemyPrefab;
     public int poolAmount = 2;
     List<GameObject> enemies = new List<GameObject>();
 
 	private Coroutine fireCoroutine;
+	private float timeSinceGameStart = 0;
+
+	private bool gameEnded = false;
 
     void Start()
     {
+		delayTime = delayTimeStart;
 		fireCoroutine = StartCoroutine (EnableFireCoroutine ());
 
         for(int i =0;i < poolAmount; i++){
@@ -30,8 +38,23 @@ public class EnemyPool : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
+	void Update(){
+		if (gameEnded)
+			return;
+		
+		delayTime = Mathf.Lerp (delayTimeStart, delayTimeMax, timeSinceGameStart / gameLength);
+		Enemy.arrowChance = Mathf.Lerp (arrowChanceStart, arrowChanceMax, Mathf.Clamp ((timeSinceGameStart - timeUntilEnemyFire) / (gameLength - timeUntilEnemyFire), 0, 1));
+
+		timeSinceGameStart += Time.deltaTime;
+
+		if (timeSinceGameStart > gameLength) {
+			gameEnded = true;
+			GamePlayScene.Instance.Victory ();
+		}
+	}
+
 	IEnumerator EnableFireCoroutine(){
-		yield return new WaitForSeconds (TIME_UNTIL_ENEMY_FIRE);
+		yield return new WaitForSeconds (timeUntilEnemyFire);
 		Debug.Log ("Enemy Shooting enabled");
 
 		foreach (GameObject enemy in enemies) {
@@ -41,7 +64,7 @@ public class EnemyPool : MonoBehaviour
 	
     IEnumerator Spawn()
     {
-        while (true)
+		while (!gameEnded)
         {
             yield return new WaitForSeconds(delayTime);
             GameObject go = GetPooledObject();

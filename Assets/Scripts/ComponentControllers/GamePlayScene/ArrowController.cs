@@ -13,7 +13,12 @@ public class ArrowController : MonoBehaviour {
 	}
 
 	void OnEnable(){
-		rib.velocity = Vector3.down * ARROW_SPEED;
+		Vector3 direction = ((PlayerController.Instance.transform.position + (Vector3)PlayerController.Instance.rib.velocity) - transform.position).normalized;
+		if (Mathf.Abs(direction.x / direction.y) > 0.2f) {
+			
+			direction = Vector3.down;
+		}
+		rib.velocity = direction * ARROW_SPEED;
 	}
 
 	public void OnHit(){

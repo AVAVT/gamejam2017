@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public float skill2CooldownTime;
 
 	private SpriteRenderer sr;
-    private Rigidbody2D rib;
+	public Rigidbody2D rib { get; private set;}
 	private bool allowControl = true;
 	private bool arriving = false;
 	public bool alive { get; private set; }
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
 			if (rib.velocity.y < 0 && transform.position.y <= initialY + arrivalZoneRadius) {
 				arriving = true;
-				sr.sprite = defaultPASet.bikeSprite;
+				SwitchAnimationSet (defaultPASet);
 			}
 		} else if (rib.velocity.y < 0 && initialY+2 < transform.position.y) {			
 			rib.velocity = Vector3.Lerp (Vector3.zero, deccelerateMaxSpeed, Mathfx.Sinerp(0,1,Mathf.Clamp((transform.position.y-initialY) / arrivalZoneRadius, 0, 1)));

@@ -2917,7 +2917,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b1ad36ccea93c4e9b52744309312bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLength: 60
+  timeUntilEnemyFire: 15
+  delayTimeStart: 1.5
+  delayTimeMax: 0.9
   delayTime: 1.5
+  arrowChanceStart: 30
+  arrowChanceMax: 85
   enemyPrefab: {fileID: 1000013154743738, guid: 082b564d080a15249b305ef3823c2c74,
     type: 2}
   poolAmount: 2

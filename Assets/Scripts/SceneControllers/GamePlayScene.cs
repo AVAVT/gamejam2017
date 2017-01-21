@@ -8,6 +8,7 @@ public class GamePlayScene : MonoBehaviour {
 	void Awake(){
 		Instance = this;
 	}
+
 	void Start(){
 		SceneManager.LoadScene (TKSceneManager.HUD_GAME_PLAY_SCENE, LoadSceneMode.Additive);
 	}
@@ -17,6 +18,11 @@ public class GamePlayScene : MonoBehaviour {
 	}
 
 	public void Victory(){
+		StartCoroutine (AnimateVictory ());
+	}
+
+	IEnumerator AnimateVictory(){
+		yield return new WaitForSeconds (13);
 		TKSceneManager.ChangeScene (TKSceneManager.VICTORY_SCENE);
 	}
 }

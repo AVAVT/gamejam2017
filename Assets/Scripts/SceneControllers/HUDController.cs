@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour {
@@ -8,11 +9,7 @@ public class HUDController : MonoBehaviour {
 
 	public Button pauseButton;
 	public Button soundButton;
-	public Button skill1Button;
-	public Button skill2Button;
-	public Button skill3Button;
-	public Button skill4Button;
-	public Button skill5Button;
+	public List<Button> skillButtons;
 
 	public GameObject skill1Panel;
 	public GameObject skill2Panel;
@@ -26,6 +23,8 @@ public class HUDController : MonoBehaviour {
 	public Sprite pauseSprite;
 
 	public GameObject gamePausedText;
+
+	public float globalCooldown = 1.5f;
 
 	void Start () {
 		canvas.worldCamera = Camera.main;
@@ -59,20 +58,35 @@ public class HUDController : MonoBehaviour {
 	}
 
 	public void OnSkill1ButtonClicked(){
-		if (!skill1Button.interactable || !PlayerController.Instance.alive)
+		if (!skillButtons[0].interactable || !PlayerController.Instance.alive)
 			return;
 		
 		PlayerController.Instance.BocDau ();
-		skill1Button.interactable = false;
-		StartCoroutine (CooldownSkill (skill1Button, PlayerController.Instance.skill1CooldownTime));
+		foreach (Button skillButton in skillButtons) {
+			if (skillButton == skillButtons [0]) {
+				skillButton.interactable = false;
+				StartCoroutine (CooldownSkill (skillButtons [0], PlayerController.Instance.skill1CooldownTime));
+			} else if(skillButton.interactable) {
+				skillButton.interactable = false;
+				StartCoroutine (CooldownSkill (skillButton, globalCooldown));
+			}
+		}
 	}
+
 	public void OnSkill2ButtonClicked(){
-		if (!skill2Button.interactable || !PlayerController.Instance.alive)
+		if (!skillButtons[1].interactable || !PlayerController.Instance.alive)
 			return;
 		
         StartCoroutine(PlayerController.Instance.INetBo());
-        skill2Button.interactable = false;
-        StartCoroutine(CooldownSkill(skill2Button, PlayerController.Instance.skill2CooldownTime));
+		foreach (Button skillButton in skillButtons) {
+			if (skillButton == skillButtons [1]) {
+				skillButton.interactable = false;
+				StartCoroutine (CooldownSkill (skillButtons [1], PlayerController.Instance.skill2CooldownTime));
+			} else if(skillButton.interactable) {
+				skillButton.interactable = false;
+				StartCoroutine (CooldownSkill (skillButton, globalCooldown));
+			}
+		}
 	}
 	public void OnSkill3ButtonClicked(){
 		Debug.Log ("OnSkill3ButtonClicked");
