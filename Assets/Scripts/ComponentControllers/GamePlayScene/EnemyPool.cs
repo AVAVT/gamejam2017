@@ -10,7 +10,7 @@ public class EnemyPool : MonoBehaviour
 		Instance = this;
 	}
 
-	private static float TIME_UNTIL_ENEMY_FIRE = 0;
+	private static float TIME_UNTIL_ENEMY_FIRE = 30;
 
 	public float delayTime;
     public GameObject enemyPrefab;

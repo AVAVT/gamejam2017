@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
     private const float SPEED_TB = -1;
     private const float RANGE = 0.2f;
 	private const float BASE_SPEED = 150;
-	private const float ARROW_CHANCE = 100;
+	private const float ARROW_CHANCE = 30;
 
 	public BoxCollider2D col1;
 	public BoxCollider2D col2;
