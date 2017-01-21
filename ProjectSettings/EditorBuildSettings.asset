@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
   - enabled: 1
     path: Assets/Scenes/VictoryScene.unity
+  - enabled: 1
+    path: Assets/Scenes/HoGuomScene.unity
