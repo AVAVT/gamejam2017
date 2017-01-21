@@ -2,16 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ExhaustController : MonoBehaviour {
-
-	public static ExhaustController Instance { get; private set; }
-
-	void Awake(){
-		if(isMainExhaust)
-			Instance = this;
-	}
-
-	public bool isMainExhaust = false;
+public class AllyExhaustController : MonoBehaviour {
 
 	public List<GameObject> prefabs;
 	public GameObject netBoFire;

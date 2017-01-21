@@ -393,6 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054c19cd9824a4257a98a59874c988f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allyLeftPrefab: {fileID: 1000014158938654, guid: 3282906137c844ada84d3e05ca18ff86,
+    type: 2}
+  allyRightPrefab: {fileID: 1000013734924172, guid: ee963cffa5a4247a790d17d1dac7d650,
+    type: 2}
   mainAnimator: {fileID: 95000011671375740}
   exhaust: {fileID: 1000013575195494}
   defaultPASet:
@@ -423,7 +427,7 @@ MonoBehaviour:
     bikeSprite: {fileID: 21300000, guid: 5aa13ea7ea0d849569564896873a278e, type: 3}
     mainSprite: {fileID: 21300000, guid: 7aa76eb6cb56d4427a72c15e44c9afb1, type: 3}
     bikeCrash: {fileID: 0}
-    mainPos: {x: 0, y: 3.5}
+    mainPos: {x: 0, y: -7}
     exhaustPos: {x: 14, y: -73}
     mainAnimator: {fileID: 9100000, guid: 229f28c328086454a82daeab1cc1a18e, type: 2}
     dieAnimator: {fileID: 0}

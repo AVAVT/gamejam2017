@@ -49,13 +49,28 @@ public class EnemyPool : MonoBehaviour
 
 		if (timeSinceGameStart > gameLength) {
 			gameEnded = true;
-			GamePlayScene.Instance.Victory ();
+			StartCoroutine (AnimateEndGame ());
 		}
+	}
+
+	IEnumerator AnimateEndGame(){
+		for (int i = 0; i< 10; i++) {
+			SpawnEnemy ();
+			SpawnEnemy ();
+			SpawnEnemy ();
+			SpawnEnemy ();
+			SpawnEnemy ();
+			SpawnEnemy ();
+
+			yield return new WaitForSeconds(0.15f);
+		}
+
+		GamePlayScene.Instance.Victory ();
+		HUDController.Instance.ActivateSkill3 ();
 	}
 
 	IEnumerator EnableFireCoroutine(){
 		yield return new WaitForSeconds (timeUntilEnemyFire);
-		Debug.Log ("Enemy Shooting enabled");
 
 		foreach (GameObject enemy in enemies) {
 			enemy.GetComponent<Enemy>().isShooting = true;
@@ -67,16 +82,16 @@ public class EnemyPool : MonoBehaviour
 		while (!gameEnded)
         {
             yield return new WaitForSeconds(delayTime);
-            GameObject go = GetPooledObject();
-            if (go != null)
-            {
-                Enemy enemy = go.GetComponent<Enemy>();
-                go.SetActive(true);
-                enemy.Spawn();
-            }
+			SpawnEnemy ();
         }
-
     }
+
+	private void SpawnEnemy(){
+		GameObject go = GetPooledObject();
+		Enemy enemy = go.GetComponent<Enemy>();
+		go.SetActive(true);
+		enemy.Spawn();
+	}
 
 	public void CheckNetBo(){
 		foreach(GameObject enemy in enemies){

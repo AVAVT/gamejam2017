@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
 {
 	public static PlayerController Instance { get; private set; }
 
+	public GameObject allyLeftPrefab;
+	public GameObject allyRightPrefab;
+
 	public Animator mainAnimator;
 	public GameObject exhaust;
 
@@ -102,6 +105,13 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	public void GoiDoi(){
+		TKUtils.Instantiate (allyLeftPrefab, new Vector3(transform.position.x + 300, - 540, 0), Quaternion.identity);
+		TKUtils.Instantiate (allyLeftPrefab, new Vector3(transform.position.x + 450, - 540, 0), Quaternion.identity);
+		TKUtils.Instantiate (allyRightPrefab, new Vector3(transform.position.x - 300, - 540, 0), Quaternion.identity);
+		TKUtils.Instantiate (allyRightPrefab, new Vector3(transform.position.x - 450, - 540, 0), Quaternion.identity);
+	}
+
 	public void BocDau(){
 		if (allowControl) {
 			allowControl = false;
@@ -123,6 +133,9 @@ public class PlayerController : MonoBehaviour
     }
 
 	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Ally")
+			return;
+		
 		if (other.gameObject.tag == "EnemyHead" || !allowControl) {
 			if (other.transform.parent != null) {
 				other.transform.parent.GetComponent<Enemy> ().Die (rib.velocity.x > 0 ? -1 : 1);	

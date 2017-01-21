@@ -22,7 +22,7 @@ public class GamePlayScene : MonoBehaviour {
 	}
 
 	IEnumerator AnimateVictory(){
-		yield return new WaitForSeconds (13);
+		yield return new WaitForSeconds (11);
 		TKSceneManager.ChangeScene (TKSceneManager.VICTORY_SCENE);
 	}
 }

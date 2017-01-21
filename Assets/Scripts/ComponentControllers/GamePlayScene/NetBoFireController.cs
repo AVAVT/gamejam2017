@@ -11,9 +11,11 @@ public class NetBoFireController : MonoBehaviour {
 
 	void OnEnable(){
 		anim.Play ("NetBoFire");
+		StartCoroutine (Finish ());
 	}
 
-	public void Finished(){
+	IEnumerator Finish(){
+		yield return new WaitForSeconds (3);
 		gameObject.SetActive (false);
 	}
 }

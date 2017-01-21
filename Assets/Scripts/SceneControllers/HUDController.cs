@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour {
+	public static HUDController Instance { get; private set; }
+
+	void Awake(){
+		Instance = this;
+	}
 
 	public Canvas canvas;
 
@@ -38,6 +43,8 @@ public class HUDController : MonoBehaviour {
 			OnSkill2ButtonClicked ();
 		} else if (Input.GetKeyDown (KeyCode.P)) {
 			OnPauseButtonClicked ();
+		} else if (Input.GetKeyDown (KeyCode.R)) {
+			OnSkill3ButtonClicked ();
 		}
 	}
 
@@ -88,9 +95,40 @@ public class HUDController : MonoBehaviour {
 			}
 		}
 	}
-	public void OnSkill3ButtonClicked(){
-		Debug.Log ("OnSkill3ButtonClicked");
+
+	public void ActivateSkill3(){
+		Debug.Log ("aaaa");
+		StopAllCoroutines ();
+		skillButtons [0].interactable = false;
+		skillButtons [1].interactable = false;
+		skillButtons [2].interactable = true;
+		skillButtons [2].gameObject.SetActive (true);
+		StartCoroutine (AnimateSkill3Button ());
 	}
+
+	IEnumerator AnimateSkill3Button(){
+		float time = 0;
+		while (true) {
+			skillButtons [2].image.color = Color.Lerp (Color.white, Color.red, (Mathf.Sin(Mathf.PI * 4 * time / 0.5f) + 1)/2.0f);
+
+			time += Time.deltaTime;
+			yield return null;
+		}
+	}
+
+	public void OnSkill3ButtonClicked(){
+		if (!skillButtons[2].interactable || !PlayerController.Instance.alive)
+			return;
+		
+		StopAllCoroutines ();
+
+		PlayerController.Instance.GoiDoi ();
+		skillButtons [2].image.color = Color.white;
+		skillButtons [0].interactable = true;
+		skillButtons [1].interactable = true;
+		skillButtons [2].interactable = false;
+	}
+
 	public void OnSkill4ButtonClicked(){
 		Debug.Log ("OnSkill4ButtonClicked");
 	}

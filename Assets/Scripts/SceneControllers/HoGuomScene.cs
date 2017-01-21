@@ -3,7 +3,6 @@ using System.Collections;
 
 public class HoGuomScene : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
 		AudioManager.Instance.PlayHoGuomBGM ();
 		StartCoroutine (WaitForSceneChange ());
