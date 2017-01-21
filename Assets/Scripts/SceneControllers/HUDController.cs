@@ -24,6 +24,7 @@ public class HUDController : MonoBehaviour {
 	}
 	public void OnSoundButtonClicked(){
 		AudioManager.Instance.ToggleSound ();
+
 	}
 
 

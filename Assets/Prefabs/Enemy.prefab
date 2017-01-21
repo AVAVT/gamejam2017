@@ -36,6 +36,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013894416792}
   - 61: {fileID: 61000012232876336}
+  - 212: {fileID: 212000012508989550}
+  - 95: {fileID: 95000010289889328}
   m_Layer: 0
   m_Name: Head
   m_TagString: EnemyHead
@@ -54,6 +56,7 @@ GameObject:
   - 114: {fileID: 114000011080256844}
   - 212: {fileID: 212000014144424226}
   - 50: {fileID: 50000012013056240}
+  - 95: {fileID: 95000011758204508}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -83,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010214828512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -28, z: 0}
+  m_LocalPosition: {x: 0, y: -10.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -96,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010915080946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 28, z: 0}
+  m_LocalPosition: {x: 0, y: 4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -130,9 +133,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -19.152573}
+  m_Offset: {x: 0, y: -22.527359}
   serializedVersion: 2
-  m_Size: {x: 30, y: 11.694855}
+  m_Size: {x: 20, y: 4.945282}
 --- !u!61 &61000012232876336
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -144,9 +147,43 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 7.980198}
+  m_Offset: {x: 0, y: 35.415398}
   serializedVersion: 2
-  m_Size: {x: 30, y: 27.655228}
+  m_Size: {x: 16.653, y: 27.160873}
+--- !u!95 &95000010289889328
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010915080946}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed6f0e1b858904c0987022803f016d4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95000011758204508
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013154743738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5cd2ecce869a14f9b893eb53f4ac956e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000011080256844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +195,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a306d3c3f61a69d48880a25393d8da81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col1: {fileID: 61000012232876336}
+  col2: {fileID: 61000011220572960}
+  horseAnim: {fileID: 95000011758204508}
+  enemyAnim: {fileID: 95000010289889328}
+  horseSr: {fileID: 212000014144424226}
+  enemySr: {fileID: 212000012508989550}
+--- !u!212 &212000012508989550
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010915080946}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 1
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1397667687
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 8ec8b6c364272436b914351af299ad22, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!212 &212000014144424226
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -187,7 +263,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1397667687
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6851bbae570cf434c8fdf89adccf5ce1, type: 3}
-  m_Color: {r: 0, g: 0.3455882, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: aa462634e81124868886f65eaef11903, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

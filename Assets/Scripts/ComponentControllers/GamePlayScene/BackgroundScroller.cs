@@ -2,6 +2,11 @@
 using System.Collections;
 
 public class BackgroundScroller : MonoBehaviour {
+	public static BackgroundScroller Instance { get; private set;}
+
+	void Awake(){
+		Instance = this;
+	}
 
     public float scrollSpeed;
     public float tileSizeY;

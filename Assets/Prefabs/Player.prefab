@@ -40,6 +40,7 @@ GameObject:
   - 212: {fileID: 212000010537044916}
   - 50: {fileID: 50000012588876982}
   - 61: {fileID: 61000013024291226}
+  - 61: {fileID: 61000013246960502}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -102,9 +103,23 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -1.6769257, y: -0.88687134}
+  m_Offset: {x: -0.48941875, y: -43.6651}
   serializedVersion: 2
-  m_Size: {x: 16.477028, y: 101.75624}
+  m_Size: {x: 16.730265, y: 16.199783}
+--- !u!61 &61000013246960502
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013181645170}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.8436942, y: 48.65332}
+  serializedVersion: 2
+  m_Size: {x: 27.948399, y: 9.656326}
 --- !u!95 &95000011671375740
 Animator:
   serializedVersion: 3
@@ -134,18 +149,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainAnimator: {fileID: 95000011671375740}
-  animatorControllerDefault: {fileID: 9100000, guid: 229f28c328086454a82daeab1cc1a18e,
-    type: 2}
-  animatorControllerLeft: {fileID: 9100000, guid: 4a9da318389b54daf9fd1f91d457186a,
-    type: 2}
-  animatorControllerRight: {fileID: 9100000, guid: a428c4c02c9784efca2d0d498744db24,
-    type: 2}
-  leftSprite: {fileID: 21300000, guid: 176210a4cb98e44e0a59b24508db893f, type: 3}
-  rightSprite: {fileID: 21300000, guid: 9e80888b08c954e04964696cd1cbf022, type: 3}
-  defaultSprite: {fileID: 21300000, guid: 6851bbae570cf434c8fdf89adccf5ce1, type: 3}
-  leftMainPos: {x: -9, y: 5}
-  rightMainPos: {x: 9, y: 5}
-  defaultMainPos: {x: 0, y: 3.5}
+  defaultPASet:
+    bikeSprite: {fileID: 21300000, guid: 6851bbae570cf434c8fdf89adccf5ce1, type: 3}
+    mainSprite: {fileID: 21300000, guid: 7aa76eb6cb56d4427a72c15e44c9afb1, type: 3}
+    mainPos: {x: 0, y: 3.5}
+    mainAnimator: {fileID: 9100000, guid: 229f28c328086454a82daeab1cc1a18e, type: 2}
+  leftPASet:
+    bikeSprite: {fileID: 21300000, guid: 176210a4cb98e44e0a59b24508db893f, type: 3}
+    mainSprite: {fileID: 21300000, guid: 516fdadc777da4b51bd02c25da288d9a, type: 3}
+    mainPos: {x: -9, y: 5}
+    mainAnimator: {fileID: 9100000, guid: 4a9da318389b54daf9fd1f91d457186a, type: 2}
+  rightPASet:
+    bikeSprite: {fileID: 21300000, guid: 9e80888b08c954e04964696cd1cbf022, type: 3}
+    mainSprite: {fileID: 21300000, guid: a4bde504b0c984eaaabb0a75b3cef781, type: 3}
+    mainPos: {x: 9, y: 5}
+    mainAnimator: {fileID: 9100000, guid: a428c4c02c9784efca2d0d498744db24, type: 2}
   acceleration: {x: 300, y: 0, z: 0}
   bocDauSpeed: {x: 0, y: 250, z: 0}
   bocDauDrag: {x: 0, y: -150, z: 0}
