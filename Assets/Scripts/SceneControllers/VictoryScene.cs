@@ -56,7 +56,7 @@ public class VictoryScene : MonoBehaviour {
 
 		time+= Time.deltaTime;
 
-		if (time > i*2.5)
+		if (time > i*2.5f)
 		{
 			setText();
 		}
