@@ -15,7 +15,7 @@ public class NetBoFireController : MonoBehaviour {
 	}
 
 	IEnumerator Finish(){
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (2);
 		gameObject.SetActive (false);
 	}
 }

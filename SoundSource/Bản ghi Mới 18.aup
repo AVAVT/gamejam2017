@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Bản ghi Mới 18_data" version="1.3.0" audacityversion="2.1.0" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="0.0000000000" zoom="54.4370644599" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds">
+	<tags/>
+	<wavetrack name="Bản ghi Mới 18" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="812540">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000917.au" len="192475" min="-0.416069" max="0.553354" rms="0.0394"/>
+				</waveblock>
+				<waveblock start="192475">
+					<simpleblockfile filename="e0000994.au" len="262144" min="-0.561057" max="0.573259" rms="0.063086"/>
+				</waveblock>
+				<waveblock start="454619">
+					<simpleblockfile filename="e00005c8.au" len="178960" min="-0.461318" max="0.507775" rms="0.041651"/>
+				</waveblock>
+				<waveblock start="633579">
+					<simpleblockfile filename="e0000397.au" len="178961" min="-0.566931" max="0.768105" rms="0.053571"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="4">
+				<controlpoint t="0.000005000000" val="0.097222208977"/>
+				<controlpoint t="0.679683968397" val="1.000000000000"/>
+				<controlpoint t="18.075919591959" val="1.000000000000"/>
+				<controlpoint t="18.424941494649" val="0.388888895512"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+</project>

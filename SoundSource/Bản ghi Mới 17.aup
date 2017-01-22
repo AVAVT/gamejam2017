@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Bản ghi Mới 17_data" version="1.3.0" audacityversion="2.1.0" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="2.5400927031" zoom="412.5833670170" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds">
+	<tags/>
+	<wavetrack name="Bản ghi Mới 17" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="201969">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000d44.au" len="201969" min="-1.040581" max="1.119802" rms="0.24562"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="4">
+				<controlpoint t="0.004852505159" val="0.097222208977"/>
+				<controlpoint t="0.809533361499" val="0.680555582047"/>
+				<controlpoint t="4.362754642811" val="0.750000000000"/>
+				<controlpoint t="4.579790918367" val="0.055555582047"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+</project>

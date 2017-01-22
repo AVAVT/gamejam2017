@@ -9,6 +9,16 @@ public class Opening_S3 : MonoBehaviour {
     public GameObject player;
     public GameObject bg;
 	private bool loaded = false;
+
+	void Start(){
+		StartCoroutine (ChangeScene ());
+	}
+
+	IEnumerator ChangeScene(){
+		yield return new WaitForSeconds (4.6f);
+		TKSceneManager.ChangeScene (TKSceneManager.OPENING_4);
+	}
+
     void Update()
     {
 		if (loaded)
@@ -16,20 +26,6 @@ public class Opening_S3 : MonoBehaviour {
 		
         bg.transform.Rotate(0, 0, rotateSpeed*Time.deltaTime);
 
-        if (player.transform.localScale.x < 100)
-        {
             player.transform.localScale += new Vector3(1, 1, 1) * scaleSpeed * Time.deltaTime;
-        }
-        else
-        {
-			loaded = true;
-            TKSceneManager.ChangeScene(TKSceneManager.OPENING_4);
-        }
-    }
-
-    private void playMusic()
-    {
-        AudioSource aSource = GetComponent<AudioSource>();
-        aSource.Play();
     }
 }

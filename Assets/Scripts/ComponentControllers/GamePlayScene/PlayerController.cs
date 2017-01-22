@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
 
 	public void BocDau(){
 		if (allowControl) {
+			AudioManager.Instance.PlayBocDauSound ();
 			allowControl = false;
 			SwitchAnimationSet (bocdauPASet);
 			rib.velocity = bocDauSpeed;
@@ -123,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator INetBo()
     {
+		AudioManager.Instance.PlayCoiSound ();
 		ExhaustController.Instance.NetBoFire ();
 		isNetBo = true;
 		EnemyPool.Instance.CheckNetBo ();
@@ -138,12 +140,14 @@ public class PlayerController : MonoBehaviour
 		
 		if (other.gameObject.tag == "EnemyHead" || !allowControl) {
 			if (other.transform.parent != null) {
-				other.transform.parent.GetComponent<Enemy> ().Die (rib.velocity.x > 0 ? -1 : 1);	
+				other.transform.parent.GetComponent<Enemy> ().Die (rib.velocity.x > 0 ? -1 : 1);
+				AudioManager.Instance.PlayEnemyDeadSound ();
 			} else {
 				Destroy (other.gameObject);
 			}
 		}
 		else if (other.gameObject.tag == "EnemyBack" || other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Arrow") {
+			AudioManager.Instance.PlayMainDeadSound ();
 			Die (rib.velocity.x > 0 ? 1 : -1);
 			if (other.gameObject.tag == "Arrow") {
 				other.GetComponent<ArrowController> ().OnHit ();

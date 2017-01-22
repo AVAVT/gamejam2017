@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Còi_data" version="1.3.0" audacityversion="2.1.0" sel0="1.1947643744" sel1="1.3620408163" vpos="0" h="0.0000000000" zoom="460.3418144919" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds">
+	<tags/>
+	<wavetrack name="Còi" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="60066">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000dc2.au" len="60066" min="-0.728371" max="0.816578" rms="0.244987"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="2">
+				<controlpoint t="1.192592075534" val="1.000000000000"/>
+				<controlpoint t="1.362030162700" val="0.041666686535"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+</project>

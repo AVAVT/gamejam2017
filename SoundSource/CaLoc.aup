@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="CaLoc_data" version="1.3.0" audacityversion="2.1.0" sel0="12.6161618611" sel1="12.6161618611" vpos="0" h="0.0000000000" zoom="84.0984771504" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds">
+	<tags/>
+	<wavetrack name="Bản ghi Mới 23" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="556373">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000784.au" len="245364" min="-0.630881" max="0.479593" rms="0.025036"/>
+				</waveblock>
+				<waveblock start="245364">
+					<simpleblockfile filename="e0000227.au" len="155504" min="-0.520524" max="0.384252" rms="0.020416"/>
+				</waveblock>
+				<waveblock start="400868">
+					<simpleblockfile filename="e0000882.au" len="155505" min="-0.325622" max="0.261475" rms="0.018317"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

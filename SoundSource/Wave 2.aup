@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Wave 2_data" version="1.3.0" audacityversion="2.1.0" sel0="0.0000000000" sel1="6.2852380952" vpos="0" h="0.3485344453" zoom="172.1494125253" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds">
+	<tags/>
+	<wavetrack name="Wave 2" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="277179">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000da2.au" len="138589" min="-1.167359" max="1.212875" rms="0.150031"/>
+				</waveblock>
+				<waveblock start="138589">
+					<simpleblockfile filename="e000091a.au" len="138590" min="-1.337601" max="1.287168" rms="0.18263"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="4">
+				<controlpoint t="0.005808907421" val="0.486111104488"/>
+				<controlpoint t="0.214929574590" val="1.000000000000"/>
+				<controlpoint t="5.977365736574" val="1.000000000000"/>
+				<controlpoint t="6.285233095238" val="0.138888895512"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+</project>

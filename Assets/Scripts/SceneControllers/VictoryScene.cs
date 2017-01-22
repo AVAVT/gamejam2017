@@ -8,72 +8,87 @@ public class VictoryScene : MonoBehaviour {
     public Text textEnding;
     public Image imageCharacter;
 
-    public int timeCout = 0;
-    public int i = 0;
+	private bool animating = true;
 
-    Vector3 endPosition = new Vector3(108, 444, 0);
-    private List<string> textarr = new List<string>();
-    public StreamReader sr = new StreamReader("Assets/Text/ending.txt");
+	public float time = 0;
+	public int i = 0;
 
-	void Start()
-    {
-		//Invoke ("GoToMenu", 1);
-        string line;
-        while ((line = sr.ReadLine()) != null)
-        {
-            textarr.Add(line);
-        }
-    }
+	private List<string> textarr = new List<string>();
+	public StreamReader sr = new StreamReader("Assets/Text/ending.txt");
+
+
+	void Start(){
+		string line;
+		while ((line = sr.ReadLine()) != null)
+		{
+			textarr.Add(line);
+		}
+		setText ();
+	}
 
     void Update()
     {
-        timeCout++;
-        int time = 0;
-
-        if (timeCout % 2 == 0)
+		if (!animating)
+			return;
+		
+        if (imageCharacter.transform.position.y < 10)
         {
-            if (imageCharacter.transform.position.y < 10)
-            {
-                imageCharacter.transform.Translate(new Vector3(-0.3f, 2.5f, 0));
-            }
-
-            else if (imageCharacter.transform.position.y <= 250)
-            {
-                imageCharacter.transform.Translate(new Vector3(1.5f, 2.5f, 0));
-            }
-            else
-            {
-                imageCharacter.transform.Translate(new Vector3(0.2f, 2.5f, 0));
-            }
-            
-                imageCharacter.transform.localScale += new Vector3(-0.0015F, -0.0015F, 0);
-            if (imageCharacter.transform.localScale.x <= 0)
-            {
-                imageCharacter.transform.localScale = new Vector3(0,0, 0);
-            }
+            imageCharacter.transform.Translate(new Vector3(-0.3f, 2.5f, 0));
         }
 
-        if (timeCout > 150)
+        else if (imageCharacter.transform.position.y <= 250)
         {
-            setText();
-            timeCout = 0;
-        }
-    }
-
-    void setText()
-    {
-        if (i < textarr.Count)
-        {
-            textEnding.text = textarr[i++];
+            imageCharacter.transform.Translate(new Vector3(1.5f, 2.5f, 0));
         }
         else
-            textEnding.text = "";
+        {
+            imageCharacter.transform.Translate(new Vector3(0.2f, 2.5f, 0));
+        }
+
+		if (imageCharacter.transform.localScale.x > 0) {
+			imageCharacter.transform.localScale += new Vector3(-0.0015F, -0.0015F, 0);
+		}
+		else
+        {
+			animating = false;
+			StartCoroutine (TheEnd ());
+        }
+
+		time+= Time.deltaTime;
+
+		if (time > i*2.5)
+		{
+			setText();
+		}
     }
 
-    void move()
-    {
-        
-    }
+	void setText()
+	{
+		if (i < textarr.Count)
+		{
+			textEnding.text = textarr[i++];
+		}
+	}
+
+	IEnumerator TheEnd(){
+		yield return new WaitForSeconds (1);
+
+		textEnding.color = Color.clear;
+		textEnding.text = "Thế là Chiến Sóng về trời...";
+		float time = 0;
+		while (time < 0.5f) {
+			textEnding.color = Color.Lerp (Color.clear, Color.black, Mathfx.Sinerp (0, 1, time / 0.5f));
+
+			time += Time.deltaTime;
+			yield return null;
+		}
+
+		textEnding.color = Color.black;
+
+		yield return new WaitForSeconds (2f);
+
+		GoToMenu ();
+	}
 
 	void GoToMenu(){
 		TKSceneManager.ChangeScene(TKSceneManager.MENU_SCENE);

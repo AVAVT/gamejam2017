@@ -18,6 +18,7 @@ public class GamePlayScene : MonoBehaviour {
 	}
 
 	public void Victory(){
+		StopAllCoroutines ();
 		StartCoroutine (AnimateVictory ());
 	}
 

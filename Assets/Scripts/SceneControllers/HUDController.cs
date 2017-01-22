@@ -22,10 +22,15 @@ public class HUDController : MonoBehaviour {
 	public GameObject skill4Panel;
 	public GameObject skill5Panel;
 
+	public Image mainAvatar;
+
 	public Sprite soundOnSprite;
 	public Sprite soundOffSprite;
 	public Sprite playSprite;
 	public Sprite pauseSprite;
+	public Sprite mainCare;
+	public Sprite mainCareVl;
+	public Sprite mainHappy;
 
 	public GameObject gamePausedText;
 
@@ -78,6 +83,10 @@ public class HUDController : MonoBehaviour {
 				StartCoroutine (CooldownSkill (skillButton, globalCooldown));
 			}
 		}
+
+		mainAvatar.sprite = mainCare;
+		mainAvatar.SetNativeSize ();
+		StartCoroutine (AnimateAvatar ());
 	}
 
 	public void OnSkill2ButtonClicked(){
@@ -94,6 +103,9 @@ public class HUDController : MonoBehaviour {
 				StartCoroutine (CooldownSkill (skillButton, globalCooldown));
 			}
 		}
+		mainAvatar.sprite = mainCareVl;
+		mainAvatar.SetNativeSize ();
+		StartCoroutine (AnimateAvatar ());
 	}
 
 	public void ActivateSkill3(){
@@ -101,7 +113,17 @@ public class HUDController : MonoBehaviour {
 		skillButtons [0].interactable = false;
 		skillButtons [1].interactable = false;
 
+		mainAvatar.sprite = mainHappy;
+		mainAvatar.SetNativeSize ();
+
+		StartCoroutine (AnimateAvatar ());
 		StartCoroutine (AnimateSkill3Button ());
+	}
+
+	IEnumerator AnimateAvatar(){
+		yield return new WaitForSeconds (globalCooldown - 0.1f);
+		mainAvatar.sprite = mainHappy;
+		mainAvatar.SetNativeSize ();
 	}
 
 	IEnumerator AnimateSkill3Button(){

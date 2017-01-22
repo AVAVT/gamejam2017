@@ -55,6 +55,7 @@ public class EnemyPool : MonoBehaviour
 
 	IEnumerator AnimateEndGame(){
 		HUDController.Instance.ActivateSkill3 ();
+		AudioManager.Instance.PlayBattleSound ();
 		for (int i = 0; i< 10; i++) {
 			SpawnEnemy ();
 			SpawnEnemy ();
@@ -94,8 +95,14 @@ public class EnemyPool : MonoBehaviour
 	}
 
 	public void CheckNetBo(){
+		bool foundDead = false;
 		foreach(GameObject enemy in enemies){
 			if(enemy.activeInHierarchy && Vector2.Distance(enemy.transform.position, PlayerController.Instance.transform.position) < PlayerController.Instance.netBoAoeRange){
+				if (!foundDead) {
+					AudioManager.Instance.PlayEnemyDeadSound ();
+					foundDead = true;
+				}
+					
 				enemy.GetComponent<Enemy>().Die(Random.Range(0,100) < 50 ? -1 : 1);
 			}
 		}
